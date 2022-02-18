@@ -21,11 +21,12 @@
       // 第一种方式
       axios({
         method: 'get',
-        url: 'http://localhost:3000/posts/1',
+        // url: 'http://localhost:3000/posts/188', // 错误接口 测试错误处理，完成
+        url: 'http://localhost:3000/posts/1', // 正确接口
       })
       .then((response) => console.log('页面请求返回的信息-成功的:', response))
       .catch(e => {
-        console.log('页面请求返回的信息-失败的', e)
+        console.log('页面请求返回的信息-失败的:', e)
       })
 
       // 第二种方式
