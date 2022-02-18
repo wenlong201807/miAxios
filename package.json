@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "server": "json-server -w server/db.json",
+    "server:delay": "json-server -w server/db.json -d 5000",
     "dev": "rollup -c -w"
   },
   "keywords": [],
