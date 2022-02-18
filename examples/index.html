@@ -9,11 +9,71 @@
   </head>
   <body>
     <script>
+      // 参考官网 http://www.axios-js.com/zh-cn/docs/#%E6%8B%A6%E6%88%AA%E5%99%A8
+      /**
+       * 有多个拦截器的话，
+       * 所有请求拦截器在前
+       * 所有响应拦截器在后
+      */
+
+      // 添加请求拦截器
+      axios.interceptors.request.use(
+        function (config) {
+          console.log('在发送请求之前做些什么')
+          // 在发送请求之前做些什么
+          return config;
+        },
+        function (error) {
+          console.log('对请求错误做些什么')
+          // 对请求错误做些什么
+          return Promise.reject(error);
+        }
+      );
+      // 添加请求拦截器
+      axios.interceptors.request.use(
+        function (config) {
+          console.log('在发送请求之前做些什么')
+          // 在发送请求之前做些什么
+          return config;
+        },
+        function (error) {
+          console.log('对请求错误做些什么')
+          // 对请求错误做些什么
+          return Promise.reject(error);
+        }
+      );
+
+      // 添加响应拦截器
+      axios.interceptors.response.use(
+        function (response) {
+          console.log('对响应数据做点什么')
+          // 对响应数据做点什么
+          return response;
+        },
+        function (error) {
+          console.log('对响应错误做点什么')
+          // 对响应错误做点什么
+          return Promise.reject(error);
+        }
+      );
+      // 添加响应拦截器
+      axios.interceptors.response.use(
+        function (response) {
+          console.log('对响应数据做点什么')
+          // 对响应数据做点什么
+          return response;
+        },
+        function (error) {
+          console.log('对响应错误做点什么')
+          // 对响应错误做点什么
+          return Promise.reject(error);
+        }
+      );
       // 第一种方式
-      axios({
-        method: 'get',
-        url: 'http://localhost:3000/posts/1',
-      }).then((response) => console.log(response));
+      // axios({
+      //   method: 'get',
+      //   url: 'http://localhost:3000/posts/1',
+      // }).then((response) => console.log(response));
 
       // 第二种方式
       // 为给定 ID 的 user 创建请求
