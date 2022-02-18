@@ -4,72 +4,73 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>打包生产的代码</title>
+    <title>功能测试</title>
   </head>
   <body>
     <h1>打包生产的代码</h1>
     <script src="dist/bundle.js"></script>
 
     <script>
-      // 成功
+      // 成功-------------------
       // axios({
       //   method: 'get',
       //   gsd: 'gsd-window666',
       // });
 
+      // 拦截器测试成功-----------
       // 添加请求拦截器
-      axios.interceptors.request.use(
-        function (config) {
-          console.log('在发送请求之前做些什么')
-          // 在发送请求之前做些什么
-          return config;
-        },
-        function (error) {
-          console.log('对请求错误做些什么')
-          // 对请求错误做些什么
-          return Promise.reject(error);
-        }
-      );
+      // axios.interceptors.request.use(
+      //   function (config) {
+      //     console.log('在发送请求之前做些什么')
+      //     // 在发送请求之前做些什么
+      //     return config;
+      //   },
+      //   function (error) {
+      //     console.log('对请求错误做些什么')
+      //     // 对请求错误做些什么
+      //     return Promise.reject(error);
+      //   }
+      // );
       // 添加请求拦截器
-      axios.interceptors.request.use(
-        function (config) {
-          console.log('在发送请求之前做些什么')
-          // 在发送请求之前做些什么
-          return config;
-        },
-        function (error) {
-          console.log('对请求错误做些什么')
-          // 对请求错误做些什么
-          return Promise.reject(error);
-        }
-      );
+      // axios.interceptors.request.use(
+      //   function (config) {
+      //     console.log('在发送请求之前做些什么')
+      //     // 在发送请求之前做些什么
+      //     return config;
+      //   },
+      //   function (error) {
+      //     console.log('对请求错误做些什么')
+      //     // 对请求错误做些什么
+      //     return Promise.reject(error);
+      //   }
+      // );
 
       // 添加响应拦截器
-      axios.interceptors.response.use(
-        function (response) {
-          console.log('对响应数据做点什么')
-          // 对响应数据做点什么
-          return response;
-        },
-        function (error) {
-          console.log('对响应错误做点什么')
-          // 对响应错误做点什么
-          return Promise.reject(error);
-        }
-      );
+      // axios.interceptors.response.use(
+      //   function (response) {
+      //     console.log('对响应数据做点什么')
+      //     // 对响应数据做点什么
+      //     return response;
+      //   },
+      //   function (error) {
+      //     console.log('对响应错误做点什么')
+      //     // 对响应错误做点什么
+      //     return Promise.reject(error);
+      //   }
+      // );
       // 添加响应拦截器
-      axios.interceptors.response.use(
-        function (response) {
-          console.log('对响应数据做点什么')
-          // 对响应数据做点什么
-          return response;
-        },
-        function (error) {
-          console.log('对响应错误做点什么')
-          // 对响应错误做点什么
-          return Promise.reject(error);
-        }
-      );
+      // axios.interceptors.response.use(
+      //   function (response) {
+      //     console.log('对响应数据做点什么')
+      //     // 对响应数据做点什么
+      //     return response;
+      //   },
+      //   function (error) {
+      //     console.log('对响应错误做点什么')
+      //     // 对响应错误做点什么
+      //     return Promise.reject(error);
+      //   }
+      // );
 
       // 继续实现以下两种方式调用
       // 第一种方式
