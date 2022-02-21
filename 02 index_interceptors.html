@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>功能测试</title>
+  </head>
+  <body>
+    <h1>打包生产的代码</h1>
+    <button onclick="cancelRequest()">取消操作</button>
+
+    <script src="dist/bundle.js"></script>
+
+    <script>
+      // 使用 cancel token 取消请求
+      // http://www.axios-js.com/zh-cn/docs/#%E5%8F%96%E6%B6%88
+      const CancelToken = axios.CancelToken;
+      var cancel;
+
+      axios({
+        method: 'get',
+        url: 'http://localhost:3000/comments/1', // 正确接口
+        cancelToken: new CancelToken(function executor(c) {
+          // executor 函数接收一个 cancel 函数作为参数
+          cancel = c;
+        }),
+      })
+        .then((response) => {
+          // then中的回调函数没有实现有名函数写法
+          console.log('不中断请求正确返回:', response);
+        })
+        .catch((thrown) => {
+          console.log('中断请求后错误内容返回:', thrown);
+        });
+
+      axios({
+        method: 'get',
+        url: 'http://localhost:3000/comments/1', // 正确接口
+      })
+        .then((response) => console.log('页面请求返回的信息-成功的:', response))
+        .catch((e) => {
+          console.log('页面请求返回的信息-失败的:', e);
+        });
+      // 这种方式没有兼容中断请求的写法？？？
+      // axios
+      //   .get('http://localhost:3000/comments/1')
+      //   .then((response) => {
+      //     console.log(response);
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+
+      // 这个函数必须要放在 后面！！！
+      function cancelRequest() {
+        console.log('取消按钮操作');
+        // cancel();
+      }
+
+      // 取消请求（message 参数是可选的）
+      // TODO 未实现
+      // source.cancel('Operation canceled by the user.');
+
+      // 成功-------------------
+      // axios({
+      //   method: 'get',
+      //   gsd: 'gsd-window666',
+      // });
+
+      // 拦截器测试成功-----------
+      // 添加请求拦截器
+      // axios.interceptors.request.use(
+      //   function (config) {
+      //     console.log('在发送请求之前做些什么')
+      //     // 在发送请求之前做些什么
+      //     return config;
+      //   },
+      //   function (error) {
+      //     console.log('对请求错误做些什么')
+      //     // 对请求错误做些什么
+      //     return Promise.reject(error);
+      //   }
+      // );
+      // 添加请求拦截器
+      // axios.interceptors.request.use(
+      //   function (config) {
+      //     console.log('在发送请求之前做些什么')
+      //     // 在发送请求之前做些什么
+      //     return config;
+      //   },
+      //   function (error) {
+      //     console.log('对请求错误做些什么')
+      //     // 对请求错误做些什么
+      //     return Promise.reject(error);
+      //   }
+      // );
+
+      // 添加响应拦截器
+      // axios.interceptors.response.use(
+      //   function (response) {
+      //     console.log('对响应数据做点什么')
+      //     // 对响应数据做点什么
+      //     return response;
+      //   },
+      //   function (error) {
+      //     console.log('对响应错误做点什么')
+      //     // 对响应错误做点什么
+      //     return Promise.reject(error);
+      //   }
+      // );
+      // 添加响应拦截器
+      // axios.interceptors.response.use(
+      //   function (response) {
+      //     console.log('对响应数据做点什么')
+      //     // 对响应数据做点什么
+      //     return response;
+      //   },
+      //   function (error) {
+      //     console.log('对响应错误做点什么')
+      //     // 对响应错误做点什么
+      //     return Promise.reject(error);
+      //   }
+      // );
+
+      // 继续实现以下两种方式调用
+      // 第一种方式
+      // axios({
+      //   method: 'get',
+      //   // url: 'http://localhost:3000/posts/188', // 错误接口 测试错误处理，完成
+      //   url: 'http://localhost:3000/posts/1', // 正确接口
+      // })
+      // .then((response) => console.log('页面请求返回的信息-成功的:', response))
+      // .catch(e => {
+      //   console.log('页面请求返回的信息-失败的:', e)
+      // })
+
+      // 第二种方式
+      // 为给定 ID 的 user 创建请求
+      // 这种方式在 中断请求中，没有兼容？？？
+      // axios
+      //   .get('http://localhost:3000/posts/1')
+      //   .then(function (response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
+    </script>
+  </body>
+</html>

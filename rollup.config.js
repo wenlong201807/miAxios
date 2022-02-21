@@ -17,7 +17,8 @@ export default {
       open: true, // 自动打开页面 // 无效
       host: 'localhost',
       port: 8008,
-      openPage: './index.html', // 打开的页面 // 未测试
+      openPage: './caneclToken.html', // 入口页面
+      // openPage: './interceptors.html', // 入口页面
       verbose: true, // 无效
       contentBase: '', // 未测试
       headers: { // 未测试

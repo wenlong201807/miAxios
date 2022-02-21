@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <button onclick="cancelRequest()">取消操作</button>
+    <script>
+      
+
+      // 使用 cancel token 取消请求
+      // http://www.axios-js.com/zh-cn/docs/#%E5%8F%96%E6%B6%88
+      const CancelToken = axios.CancelToken;
+      const source = CancelToken.source();
+      let cancel;
+
+      axios
+        .get('http://localhost:3000/posts/1', {
+          // cancelToken: source.token,
+          cancelToken: new CancelToken(function executor(c) {
+            // executor 函数接收一个 cancel 函数作为参数
+            cancel = c;
+          }),
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (thrown) {
+          if (axios.isCancel(thrown)) {
+            console.log('Request canceled', thrown.message);
+          } else {
+            // 处理错误
+          }
+        });
+      axios
+        .get('http://localhost:3000/comments/1')
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      // 这个函数必须要放在 后面！！！
+      function cancelRequest() {
+        console.log('取消按钮操作');
+        cancel();
+      }
+
+      // 取消请求（message 参数是可选的）
+      source.cancel('Operation canceled by the user.');
+
+    </script>
+  </body>
+</html>
