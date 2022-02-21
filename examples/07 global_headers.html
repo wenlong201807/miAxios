@@ -4,19 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>功能测试</title>
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
-    <h1>打包生产的代码</h1>
-
-    <script src="dist/bundle.js"></script>
-
+    
     <script>
       // 全局的 axios 默认值
       // http://www.axios-js.com/zh-cn/docs/#%E5%85%A8%E5%B1%80%E7%9A%84-axios-%E9%BB%98%E8%AE%A4%E5%80%BC
 
        // post成功
-       axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+      axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
       let params = new URLSearchParams();
       params.append('title', 'json-server66');
       params.append('author', 'zhaoliu');
