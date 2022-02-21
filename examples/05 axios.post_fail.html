@@ -10,20 +10,29 @@
   <body>
     
     <script>
-      const params = {
-        title: '测试post方法--自定义实现',
-        author: 'zhangsan27777'
-      }
+      // const params = {
+      //   title: '测试post方法--自定义实现',
+      //   author: 'zhangsan27777'
+      // }
       
-      axios
-        .post('http://localhost:3000/posts', params)
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+      // axios
+      //   .post('http://localhost:3000/posts', params)
+      //   .then(function (response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
 
+      axios({
+        method: 'post',
+        url: 'http://localhost:3000/posts',
+        data: { title: 'post-jiagong', author: 'wangwu'}
+      }).then(res => {
+        console.log('post-success:', res)
+      }).catch(err => {
+        console.log('post-fail:', err)
+      })
     </script>
   </body>
 </html>
