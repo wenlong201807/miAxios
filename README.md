@@ -13,3 +13,4 @@
 - [rollup启动本地服务server -> npm](https://www.npmjs.com/package/rollup-plugin-serve)
 - [XMLHttpRequest—必知必会](https://www.jianshu.com/p/918c63045bc3/)
 - [使用 cancel token 取消请求](http://www.axios-js.com/zh-cn/docs/#%E5%8F%96%E6%B6%88)
+- [聊聊JS的二进制家族：Blob、ArrayBuffer和Buffer](https://zhuanlan.zhihu.com/p/97768916)
